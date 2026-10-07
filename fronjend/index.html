@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>How many days until Raghav can drink?</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="hero">
+    <main>
+      <p>Until Raghav can drink</p>
+      <p id="demo"></p>
+    </main>
+  </div>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo-row">
+          <img src="image.s/FOUND.png" alt="Logo" width="48" height="48">
+          <h3 class="footer-title">raghav.fit</h3>
+        </div>
+        <p id="footerRandom" class="footer-tagline"></p>
+      </div>
+
+      <div>
+        <h3 class="footer-heading">More things ive made</h3>
+        <div class="footer-links">
+          <a href="https://raghav.fit/">My website</a>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="footer-heading">Connect</h3>
+        <div class="footer-links">
+          <a href="https://github.com/reghev" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="https://www.linkedin.com/in/raghav-madiraju-1363bb338" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="mailto:raghavmadiraju@gmail.com">Email</a>
+          <a href="https://www.instagram.com/reghevbetta" target="_blank" rel="noopener noreferrer">Instagram</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copy">&copy; 2026 raghav.fit &middot; Built with HTML &amp; CSS</p>
+    </div>
+  </div>
+</footer>
+
+  <script>
+    // ---- Footer random text ----
+    var phrases = [
+      "building legos", "poorly coding stuff", "doing things", "being here",
+      "playing stanley parable", "burning things", "lifting weights",
+      "listening to nirvana", "thinking about food", "avoiding homework",
+      "daydreaming about hackclub", "looking at fender custom shop",
+      "waiting for summer", "pondering existence", "pcpartpicker connoisseur"
+    ];
+    document.getElementById("footerRandom").textContent =
+      phrases[Math.floor(Math.random() * phrases.length)] + " since a little bit ago";
+
+    // ---- Countdown ----
+    // taken from https://www.w3schools.com/howto/howto_js_countdown.asp slightly edited
+    var countDownDate = new Date("2032-12-29T03:00:00-05:00").getTime();
+    var offset = 0; // how far the visitor's clock is from the server's
+
+    async function syncClock() {
+      try {
+        const t0 = Date.now();
+        const data = await fetch("/api/time", { cache: "no-store" }).then(r => r.json());
+        const t1 = Date.now();
+        offset = data.now + (t1 - t0) / 2 - t1;
+        countDownDate = data.target;
+      } catch (e) {
+        console.log("Clock sync failed, using local time", e);
+      }
+    }
+
+    function tick() {
+      var now = Date.now() + offset;
+      var distance = countDownDate - now;
+
+      if (distance <= 0) {
+        document.getElementById("demo").innerHTML = "EXPIRED";
+        return;
+      }
+
+      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("demo").innerHTML =
+        days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+      // Schedule the next tick for the start of the next second
+      setTimeout(tick, 1000 - (now % 1000));
+    }
+
+    syncClock().then(tick);
+    setInterval(syncClock, 5 * 60 * 1000); // re-sync every 5 minutes
+  </script>
+</body>
+
+</html>

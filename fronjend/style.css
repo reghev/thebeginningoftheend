@@ -1,0 +1,133 @@
+html {
+  background-image: url("image.s/background.webp");
+  background-repeat: repeat;
+  background-size: 300px;
+}
+
+body {
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+main {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  background: white;
+  border: 3px solid black;
+  border-radius: 8px;
+}
+/*had to undo the comic snas to everything*/
+p { font-weight: normal; }
+#demo { font-size: 2rem; font-weight: bold; }
+input { padding: 8px; width: 60%; }
+button { padding: 8px 14px; }
+input, button { font-family: inherit; }
+ul { list-style: none; padding: 0; }
+li { padding: 6px 0; border-bottom: 1px solid #ddd; }
+
+
+
+/*FOOTER*/
+.site-footer {
+  margin-top: auto;
+  background: #000;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: left;
+  font-weight: normal;
+  line-height: 1.5;
+  font-family: ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+.site-footer p { margin: 0; font-weight: normal; }
+
+.footer-inner {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+@media (min-width: 768px) {
+  .footer-grid { grid-template-columns: repeat(4, 1fr); }
+  .footer-brand { grid-column: span 2; }
+}
+
+.footer-logo-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+.footer-logo-row img { width: 48px; height: 48px; display: block; }
+
+.footer-title { margin: 0; font-size: 1.25rem; line-height: 1.75rem; font-weight: 700; color: #fff; }
+.footer-tagline { font-size: 0.875rem; line-height: 1.25rem; color: #6b7280; }
+
+.footer-heading {
+  margin: 0 0 1rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 600;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.footer-links { display: flex; flex-direction: column; gap: 0.75rem; }
+
+.footer-links a,
+.footer-bottom a,
+.footer-copy {
+  color: #6b7280;
+  text-decoration: none;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+.footer-links a,
+.footer-bottom a { transition: color 0.15s; }
+.footer-links a:hover,
+.footer-bottom a:hover { color: #fff; }
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+@media (min-width: 768px) {
+  .footer-bottom { flex-direction: row; }
+}
+.footer-bottom-links { display: flex; gap: 1.5rem; }
+/*FOOTER*/
+
+
+
+.hero {
+  min-height: 200vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0 16px;
+  box-sizing: border-box;
+}
+.screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
