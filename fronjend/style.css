@@ -56,7 +56,7 @@ li { padding: 6px 0; border-bottom: 1px solid #ddd; }
 .footer-inner {
   max-width: 72rem;
   margin: 0 auto;
-  padding: 4rem 2rem;
+  padding: 3rem 2rem;
   box-sizing: border-box;
 }
 
@@ -64,7 +64,7 @@ li { padding: 6px 0; border-bottom: 1px solid #ddd; }
   display: grid;
   grid-template-columns: 1fr;
   gap: 3rem;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
 }
 @media (min-width: 768px) {
   .footer-grid { grid-template-columns: repeat(4, 1fr); }
@@ -109,7 +109,7 @@ li { padding: 6px 0; border-bottom: 1px solid #ddd; }
 
 .footer-bottom {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding-top: 2rem;
+  padding-top: 1.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
