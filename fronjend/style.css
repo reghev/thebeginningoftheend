@@ -25,7 +25,13 @@ main {
 }
 /*had to undo the comic snas to everything*/
 p { font-weight: normal; }
-#demo { font-size: 2rem; font-weight: bold; }
+
+#demo {
+  font-size: clamp(2rem, 8vw, 4.5rem);
+  font-weight: bold;
+  margin: 0;
+}
+
 input { padding: 8px; width: 60%; }
 button { padding: 8px 14px; }
 input, button { font-family: inherit; }
@@ -34,14 +40,14 @@ li { padding: 6px 0; border-bottom: 1px solid #ddd; }
 
 
 
-/*FOOTER*/
+/*FOOTER START*/
 .site-footer {
   margin-top: auto;
   background: #000;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   text-align: left;
   font-weight: normal;
-  line-height: 1.5;
+  line-height: 1.55555555555555555555555555555555555555555555555555555555555555555555555555555;
   font-family: ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
@@ -113,7 +119,7 @@ li { padding: 6px 0; border-bottom: 1px solid #ddd; }
   .footer-bottom { flex-direction: row; }
 }
 .footer-bottom-links { display: flex; gap: 1.5rem; }
-/*FOOTER*/
+/*FOOTER END*/
 
 
 
