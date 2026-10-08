@@ -14,49 +14,69 @@
     </main>
   </div>
 
-<footer class="site-footer">
-  <div class="footer-inner">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <div class="footer-logo-row">
-          <img src="image.s/FOUND.png" alt="Logo" width="48" height="48">
-          <h3 class="footer-title">raghav.fit</h3>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo-row">
+            <img src="image.s/FOUND.png" alt="Logo" width="48" height="48">
+            <h3 class="footer-title">raghav.fit</h3>
+          </div>
+          <p id="footerRandom" class="footer-tagline"></p>
         </div>
-        <p id="footerRandom" class="footer-tagline"></p>
+
+        <div>
+          <h3 class="footer-heading">Navigation</h3>
+          <div class="footer-links">
+            <a href="https://raghav.fit/">My website</a>
+          </div>
+        </div>
+
+        <div class="logo-swap" id="logoSwap" role="button" tabindex="0" aria-label="Switch logo">
+          <img class="logo-a" src="image.s/FOUND.png" alt="Logo" width="48" height="48">
+          <img class="logo-b" src="image.s/MISSING.png" alt="" width="48" height="48">
+        </div>
+
+        <div>
+          <h3 class="footer-heading">Connect</h3>
+          <div class="footer-links">
+            <a href="https://github.com/reghev" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://www.linkedin.com/in/raghav-madiraju-1363bb338" target="_blank"
+              rel="noopener noreferrer">LinkedIn</a>
+            <a href="mailto:raghavmadiraju@gmail.com">Email</a>
+            <a href="https://www.instagram.com/reghevbetta" target="_blank" rel="noopener noreferrer">Instagram</a>
+          </div>
+        </div>
       </div>
 
-      <div>
-        <h3 class="footer-heading">More things ive made</h3>
-        <div class="footer-links">
-          <a href="https://raghav.fit/">My website</a>
-        </div>
-      </div>
-
-      <div>
-        <h3 class="footer-heading">Connect</h3>
-        <div class="footer-links">
-          <a href="https://github.com/reghev" target="_blank" rel="noopener noreferrer">GitHub</a>
-          <a href="https://www.linkedin.com/in/raghav-madiraju-1363bb338" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          <a href="mailto:raghavmadiraju@gmail.com">Email</a>
-          <a href="https://www.instagram.com/reghevbetta" target="_blank" rel="noopener noreferrer">Instagram</a>
-        </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2026 raghav.fit &middot; Built with HTML &amp; CSS</p>
       </div>
     </div>
-
-    <div class="footer-bottom">
-      <p class="footer-copy">&copy; 2026 raghav.fit &middot; Built with HTML &amp; CSS</p>
-    </div>
-  </div>
-</footer>
+  </footer>
 
   <script>
+
+    //Logo swap on click
+    var logo = document.getElementById("logoSwap");
+    logo.addEventListener("click", function () {
+      logo.classList.toggle("swapped");
+    });
+    logo.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        logo.classList.toggle("swapped");
+      }
+    });
+
+
     // footer thingy
     var phrases = [
       "building legos", "poorly coding stuff", "doing things", "being here",
-      "playing stanley parable", "burning things", "lifting weights",
+      "playing stanley parable", "burning things", "lifting",
       "listening to nirvana", "thinking about food", "avoiding homework",
       "daydreaming about hackclub", "looking at fender custom shop",
-      "waiting for summer", "pondering existence", "pcpartpicker connoisseur"
+      "waiting for summer", "reading", "pcpartpicker connoisseur"
     ];
     document.getElementById("footerRandom").textContent =
       phrases[Math.floor(Math.random() * phrases.length)] + " since a little bit ago";

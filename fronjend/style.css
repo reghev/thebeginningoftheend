@@ -138,3 +138,9 @@ li { padding: 6px 0; border-bottom: 1px solid #ddd; }
   align-items: center;
   justify-content: center;
 }
+
+.logo-swap { cursor: pointer; }
+.logo-swap img { transition: opacity 0.25s; }
+.logo-swap .logo-b { opacity: 0; }
+.logo-swap.swapped .logo-a { opacity: 0; }
+.logo-swap.swapped .logo-b { opacity: 1; }
