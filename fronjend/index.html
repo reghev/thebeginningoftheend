@@ -25,7 +25,18 @@
       <p id="demo"></p>
     </main>
   </div>
+  <section class="guestbook" id="guestbook">
+    <h2>Guestbook</h2>
 
+    <form id="gbForm">
+      <input id="gbName" placeholder="Your name" maxlength="30" required>
+      <textarea id="gbMessage" placeholder="Leave a message..." maxlength="300" rows="3" required></textarea>
+      <button type="submit">Sign</button>
+      <p id="gbStatus" class="gb-status"></p>
+    </form>
+
+    <ul id="gbList"></ul>
+  </section>
   <footer class="site-footer">
     <div class="footer-inner">
       <div class="footer-grid">
@@ -68,6 +79,58 @@
   </footer>
 
   <script>
+    // Guestbook
+    async function loadGuestbook() {
+      const entries = await fetch("/api/guestbook").then(r => r.json());
+      const list = document.getElementById("gbList");
+      list.innerHTML = "";
+
+      if (!entries.length) {
+        list.innerHTML = "<li>No entries yet. Be the first!</li>";
+        return;
+      }
+
+      entries.forEach(function (e) {
+        const li = document.createElement("li");
+
+        const who = document.createElement("strong");
+        who.textContent = e.name;           // textContent, never innerHTML
+
+        const when = document.createElement("small");
+        when.textContent = " " + new Date(e.created_at).toLocaleString();
+
+        const msg = document.createElement("p");
+        msg.textContent = e.message;
+
+        li.append(who, when, msg);
+        list.appendChild(li);
+      });
+    }
+
+    document.getElementById("gbForm").addEventListener("submit", async function (ev) {
+      ev.preventDefault();
+      const status = document.getElementById("gbStatus");
+      const nameEl = document.getElementById("gbName");
+      const msgEl = document.getElementById("gbMessage");
+
+      const res = await fetch("/api/guestbook", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name: nameEl.value, message: msgEl.value })
+      });
+      const data = await res.json();
+
+      if (!res.ok) {
+        status.textContent = data.error;
+        return;
+      }
+
+      status.textContent = "Thanks for signing!";
+      msgEl.value = "";
+      loadGuestbook();
+    });
+
+    loadGuestbook();
     // Logo swap on click
     var logo = document.getElementById("logoSwap");
     logo.addEventListener("click", function () {
