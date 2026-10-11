@@ -3,8 +3,18 @@
 
 <head>
   <title>raghav.beer</title>
-  <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/png" href="image.s/MISSING.png">
+  <link rel="stylesheet" href="style.css">
+  <script>
+    var backgrounds = [
+      "image.s/beer1.webp",
+      "image.s/beer2.jpg",
+      "image.s/beer3.jpeg",
+      "image.s/beer4.jpg"
+    ];
+    var pick = backgrounds[Math.floor(Math.random() * backgrounds.length)];
+    document.documentElement.style.backgroundImage = 'url("' + pick + '")';
+  </script>
 </head>
 
 <body>
@@ -74,7 +84,7 @@
       "playing stanley parable", "burning things", "lifting",
       "listening to nirvana", "thinking about food", "avoiding homework",
       "daydreaming about hackclub", "looking at fender custom shop",
-      "waiting for summer", "playing bass", "pcpartpicker connoisseur", "reading berserk"
+      "waiting for summer", "playing bass", "pcpartpicker connoisseur", "reading comics"
     ];
     document.getElementById("footerRandom").textContent =
       phrases[Math.floor(Math.random() * phrases.length)] + " since a little bit ago";
