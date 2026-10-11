@@ -5,17 +5,7 @@
   <title>raghav.beer</title>
   <link rel="icon" type="image/png" href="image.s/MISSING.png">
   <link rel="stylesheet" href="style.css">
-  <script>
-    const fs = require("fs");
-
-    app.get("/api/backgrounds", (req, res) => {
-      const dir = path.join(__dirname, "../fronjend/image.s");
-      const files = fs
-        .readdirSync(dir)
-        .filter(f => /^beer.*\.(webp|jpe?g|png)$/i.test(f));
-      res.json(files.map(f => "image.s/" + f));
-    });
-  </script>
+  
 </head>
 
 <body>
