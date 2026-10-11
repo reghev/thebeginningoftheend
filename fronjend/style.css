@@ -23,8 +23,12 @@ main {
   border: 3px solid black;
   border-radius: 8px;
 }
+
 /*had to undo the comic snas to everything*/
-p { font-weight: normal; }
+p {
+  font-weight: normal;
+  font-size: 0.875rem;
+}
 
 #demo {
   font-size: clamp(2rem, 8vw, 4.5rem);
@@ -32,11 +36,29 @@ p { font-weight: normal; }
   margin: 0;
 }
 
-input { padding: 8px; width: 60%; }
-button { padding: 8px 14px; }
-input, button { font-family: inherit; }
-ul { list-style: none; padding: 0; }
-li { padding: 6px 0; border-bottom: 1px solid #ddd; }
+input {
+  padding: 8px;
+  width: 60%;
+}
+
+button {
+  padding: 8px 14px;
+}
+
+input,
+button {
+  font-family: inherit;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  padding: 6px 0;
+  border-bottom: 1px solid #ddd;
+}
 
 
 
@@ -51,7 +73,11 @@ li { padding: 6px 0; border-bottom: 1px solid #ddd; }
   font-family: ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
-.site-footer p { margin: 0; font-weight: normal; }
+
+.site-footer p {
+  margin: 0;
+  font-weight: normal;
+}
 
 .footer-inner {
   max-width: 72rem;
@@ -68,8 +94,13 @@ li { padding: 6px 0; border-bottom: 1px solid #ddd; }
 }
 
 @media (min-width: 768px) {
-  .footer-grid { grid-template-columns: repeat(4, 1fr); }
-  .footer-brand { grid-column: span 2; }
+  .footer-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .footer-brand {
+    grid-column: span 2;
+  }
 }
 
 .footer-logo-row {
@@ -78,10 +109,26 @@ li { padding: 6px 0; border-bottom: 1px solid #ddd; }
   gap: 0.75rem;
   margin-bottom: 1rem;
 }
-.footer-logo-row img { width: 48px; height: 48px; display: block; }
 
-.footer-title { margin: 0; font-size: 1.25rem; line-height: 1.75rem; font-weight: 700; color: #fff; }
-.footer-tagline { font-size: 0.875rem; line-height: 1.25rem; color: #6b7280; }
+.footer-logo-row img {
+  width: 48px;
+  height: 48px;
+  display: block;
+}
+
+.footer-title {
+  margin: 0;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.footer-tagline {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: #6b7280;
+}
 
 .footer-heading {
   margin: 0 0 1rem;
@@ -93,7 +140,11 @@ li { padding: 6px 0; border-bottom: 1px solid #ddd; }
   letter-spacing: 0.05em;
 }
 
-.footer-links { display: flex; flex-direction: column; gap: 0.75rem; }
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
 
 .footer-links a,
 .footer-bottom a,
@@ -103,10 +154,16 @@ li { padding: 6px 0; border-bottom: 1px solid #ddd; }
   font-size: 0.875rem;
   line-height: 1.25rem;
 }
+
 .footer-links a,
-.footer-bottom a { transition: color 0.15s; }
+.footer-bottom a {
+  transition: color 0.15s;
+}
+
 .footer-links a:hover,
-.footer-bottom a:hover { color: #fff; }
+.footer-bottom a:hover {
+  color: #fff;
+}
 
 .footer-bottom {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -117,10 +174,18 @@ li { padding: 6px 0; border-bottom: 1px solid #ddd; }
   justify-content: space-between;
   gap: 1rem;
 }
+
 @media (min-width: 768px) {
-  .footer-bottom { flex-direction: row; }
+  .footer-bottom {
+    flex-direction: row;
+  }
 }
-.footer-bottom-links { display: flex; gap: 1.5rem; }
+
+.footer-bottom-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
 /*FOOTER END*/
 
 
@@ -133,6 +198,7 @@ li { padding: 6px 0; border-bottom: 1px solid #ddd; }
   padding: 0 16px;
   box-sizing: border-box;
 }
+
 .screen {
   min-height: 100vh;
   display: flex;
@@ -149,6 +215,7 @@ li { padding: 6px 0; border-bottom: 1px solid #ddd; }
   flex-shrink: 0;
   cursor: pointer;
 }
+
 .logo-swap img {
   position: absolute;
   inset: 0;
@@ -156,7 +223,17 @@ li { padding: 6px 0; border-bottom: 1px solid #ddd; }
   height: 48px;
   transition: opacity 0.25s;
 }
-.logo-swap .logo-b { opacity: 0; }
-.logo-swap.swapped .logo-a { opacity: 0; }
-.logo-swap.swapped .logo-b { opacity: 1; }
+
+.logo-swap .logo-b {
+  opacity: 0;
+}
+
+.logo-swap.swapped .logo-a {
+  opacity: 0;
+}
+
+.logo-swap.swapped .logo-b {
+  opacity: 1;
+}
+
 /*LOGO SWAP*/

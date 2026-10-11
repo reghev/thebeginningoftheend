@@ -1,1 +1,1 @@
-readme
+Hey, this is my website that im making for Hackclubs Terra, This website is my first time using CSS and HTML for an actual website that isnt for school or realy poorly done, the website is at https://thebeginningoftheend-fronjend.vercel.app/ if you wanna check it out. I've been meaning to do this for a while because i really like the concept and the aesthetic because its really poorly done on purpose
