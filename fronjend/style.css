@@ -241,6 +241,9 @@ li {
 
 /*GUESTBOOK START*/
 .guestbook {
+  background-image: url("image.s/background.webp");
+  background-repeat: repeat;
+  background-size: 500px;
   box-sizing: border-box;
   width: calc(100% - 32px);
   max-width: 56rem;
