@@ -66,6 +66,7 @@ li { padding: 6px 0; border-bottom: 1px solid #ddd; }
   gap: 3rem;
   margin-bottom: 2rem;
 }
+
 @media (min-width: 768px) {
   .footer-grid { grid-template-columns: repeat(4, 1fr); }
   .footer-brand { grid-column: span 2; }
@@ -139,8 +140,23 @@ li { padding: 6px 0; border-bottom: 1px solid #ddd; }
   justify-content: center;
 }
 
-.logo-swap { cursor: pointer; }
-.logo-swap img { transition: opacity 0.25s; }
+
+/*LOGO SWAP*/
+.logo-swap {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+.logo-swap img {
+  position: absolute;
+  inset: 0;
+  width: 48px;
+  height: 48px;
+  transition: opacity 0.25s;
+}
 .logo-swap .logo-b { opacity: 0; }
 .logo-swap.swapped .logo-a { opacity: 0; }
 .logo-swap.swapped .logo-b { opacity: 1; }
+/*LOGO SWAP*/
