@@ -241,7 +241,7 @@ li {
 
 /*GUESTBOOK START*/
 .guestbook {
-  background-image: url("image.s/background.webp");
+
   background-repeat: repeat;
   background-size: 500px;
   box-sizing: border-box;
@@ -257,10 +257,23 @@ li {
   font-family: ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
-.guestbook p { font-weight: normal; margin: 0; }
-.gb-inner { max-width: 56rem; margin: 0 auto; }
 
-.gb-title-wrap { display: flex; justify-content: center; margin-bottom: 2rem; }
+.guestbook p {
+  font-weight: normal;
+  margin: 0;
+}
+
+.gb-inner {
+  max-width: 56rem;
+  margin: 0 auto;
+}
+
+.gb-title-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
 .gb-title {
   margin: 0;
   padding: 1rem;
@@ -279,7 +292,12 @@ li {
   font-weight: 500;
   margin-bottom: 4rem;
 }
-@media (min-width: 768px) { .gb-subtitle { font-size: 1.875rem; } }
+
+@media (min-width: 768px) {
+  .gb-subtitle {
+    font-size: 1.875rem;
+  }
+}
 
 .gb-shiny {
   background: linear-gradient(120deg, #9ca3af 40%, #fff 50%, #9ca3af 60%);
@@ -289,9 +307,15 @@ li {
   color: transparent;
   animation: gbShine 5s linear infinite;
 }
+
 @keyframes gbShine {
-  from { background-position: 150% 0; }
-  to   { background-position: -50% 0; }
+  from {
+    background-position: 150% 0;
+  }
+
+  to {
+    background-position: -50% 0;
+  }
 }
 
 .gb-card {
@@ -300,7 +324,12 @@ li {
   border-radius: 1.5rem;
   box-shadow: 0 10px 15px -3px rgba(255, 255, 255, 0.05);
 }
-.gb-form-card { padding: 1.5rem; margin-bottom: 3rem; }
+
+.gb-form-card {
+  padding: 1.5rem;
+  margin-bottom: 3rem;
+}
+
 .gb-card-title {
   margin: 0 0 1.5rem;
   font-size: 1.875rem;
@@ -309,7 +338,10 @@ li {
   color: #fff;
 }
 
-.gb-field { margin-bottom: 1rem; }
+.gb-field {
+  margin-bottom: 1rem;
+}
+
 .gb-field label {
   display: block;
   margin-bottom: 0.5rem;
@@ -317,6 +349,7 @@ li {
   font-weight: 500;
   color: #d1d5db;
 }
+
 .guestbook textarea,
 .guestbook input {
   display: block;
@@ -331,12 +364,27 @@ li {
   border-radius: 0.5rem;
   transition: border-color 0.15s;
 }
-.guestbook textarea { resize: none; }
+
+.guestbook textarea {
+  resize: none;
+}
+
 .guestbook textarea::placeholder,
-.guestbook input::placeholder { color: #6b7280; }
+.guestbook input::placeholder {
+  color: #6b7280;
+}
+
 .guestbook textarea:focus,
-.guestbook input:focus { outline: none; border-color: #a855f7; }
-.gb-count { margin-top: 0.25rem; font-size: 0.75rem; color: #6b7280; }
+.guestbook input:focus {
+  outline: none;
+  border-color: #a855f7;
+}
+
+.gb-count {
+  margin-top: 0.25rem;
+  font-size: 0.75rem;
+  color: #6b7280;
+}
 
 .guestbook button {
   width: 100%;
@@ -350,9 +398,23 @@ li {
   cursor: pointer;
   transition: background 0.15s, color 0.15s;
 }
-.guestbook button:hover:not(:disabled) { background: #1f2937; color: #fff; }
-.guestbook button:disabled { opacity: 0.5; cursor: not-allowed; }
-.gb-status { margin-top: 0.75rem; min-height: 1.2em; font-size: 0.875rem; color: #9ca3af; }
+
+.guestbook button:hover:not(:disabled) {
+  background: #1f2937;
+  color: #fff;
+}
+
+.guestbook button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.gb-status {
+  margin-top: 0.75rem;
+  min-height: 1.2em;
+  font-size: 0.875rem;
+  color: #9ca3af;
+}
 
 .gb-count-heading {
   margin: 0 0 2rem;
@@ -363,14 +425,36 @@ li {
   color: #fff;
 }
 
-#gbList { display: flex; flex-direction: column; gap: 1.5rem; }
+#gbList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
 .gb-entry {
   padding: 1.5rem;
   transition: transform 0.3s, border-color 0.3s;
 }
-.gb-entry:hover { border-color: #a855f7; transform: translateY(-0.25rem); }
-.gb-entry h3 { margin: 0; font-size: 1.25rem; line-height: 1.75rem; font-weight: 600; color: #fff; }
-.gb-date { margin-bottom: 0.75rem; font-size: 0.875rem; color: #9ca3af; }
+
+.gb-entry:hover {
+  border-color: #a855f7;
+  transform: translateY(-0.25rem);
+}
+
+.gb-entry h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.gb-date {
+  margin-bottom: 0.75rem;
+  font-size: 0.875rem;
+  color: #9ca3af;
+}
+
 .gb-message {
   font-size: 1.125rem;
   line-height: 1.75rem;
@@ -378,11 +462,28 @@ li {
   white-space: pre-wrap;
   overflow-wrap: anywhere;
 }
-.gb-empty { padding: 3rem 1rem; text-align: center; }
-.gb-empty p { font-size: 1.25rem; color: #9ca3af; }
 
-.gb-loading { text-align: center; padding: 3rem 0; }
-.gb-loading p { margin-top: 1rem; font-size: 1.125rem; color: #9ca3af; }
+.gb-empty {
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.gb-empty p {
+  font-size: 1.25rem;
+  color: #9ca3af;
+}
+
+.gb-loading {
+  text-align: center;
+  padding: 3rem 0;
+}
+
+.gb-loading p {
+  margin-top: 1rem;
+  font-size: 1.125rem;
+  color: #9ca3af;
+}
+
 .gb-spinner {
   display: inline-block;
   width: 3rem;
@@ -391,11 +492,27 @@ li {
   border-bottom: 2px solid #a855f7;
   animation: gbSpin 1s linear infinite;
 }
-@keyframes gbSpin { to { transform: rotate(360deg); } }
+
+@keyframes gbSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
 
 @media (prefers-reduced-motion: reduce) {
-  .gb-shiny, .gb-spinner { animation: none; }
-  .gb-entry { transition: border-color 0.3s; }
-  .gb-entry:hover { transform: none; }
+
+  .gb-shiny,
+  .gb-spinner {
+    animation: none;
+  }
+
+  .gb-entry {
+    transition: border-color 0.3s;
+  }
+
+  .gb-entry:hover {
+    transform: none;
+  }
 }
+
 /*GUESTBOOK END*/
