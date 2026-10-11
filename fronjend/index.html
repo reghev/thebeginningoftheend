@@ -5,7 +5,7 @@
   <title>raghav.beer</title>
   <link rel="icon" type="image/png" href="image.s/MISSING.png">
   <link rel="stylesheet" href="style.css">
-  
+
 </head>
 
 <body>
@@ -16,16 +16,41 @@
     </main>
   </div>
   <section class="guestbook" id="guestbook">
-    <h2>Guestbook</h2>
+    <div class="gb-inner">
 
-    <form id="gbForm">
-      <input id="gbName" placeholder="Your name" maxlength="30" required>
-      <textarea id="gbMessage" placeholder="Leave a message..." maxlength="300" rows="3" required></textarea>
-      <button type="submit">Sign</button>
-      <p id="gbStatus" class="gb-status"></p>
-    </form>
+      <div class="gb-title-wrap">
+        <h1 class="gb-title">guest book</h1>
+      </div>
+      <p class="gb-subtitle"><span class="gb-shiny">So, what did you think?</span></p>
 
-    <ul id="gbList"></ul>
+      <div class="gb-card gb-form-card">
+        <h2 class="gb-card-title">Sign the Guest Book</h2>
+        <form id="gbForm">
+          <div class="gb-field">
+            <label for="gbMessage">Message</label>
+            <textarea id="gbMessage" rows="4" maxlength="500"
+              placeholder="what were your thoughts, what should i add?"></textarea>
+            <p class="gb-count"><span id="gbCharCount">0</span>/500 characters</p>
+          </div>
+          <div class="gb-field">
+            <label for="gbName">Name</label>
+            <input id="gbName" type="text" maxlength="50" placeholder="sign here">
+          </div>
+          <button id="gbSubmit" type="submit" disabled>Sign Guest Book</button>
+          <p id="gbStatus" class="gb-status"></p>
+        </form>
+      </div>
+
+      <h2 class="gb-count-heading" id="gbCount">0 Signatures</h2>
+
+      <div id="gbLoading" class="gb-loading">
+        <div class="gb-spinner"></div>
+        <p id="gbLoadingText"></p>
+      </div>
+
+      <div id="gbList"></div>
+
+    </div>
   </section>
   <footer class="site-footer">
     <div class="footer-inner">
@@ -70,68 +95,111 @@
 
   <script>
     // Guestbook
+    var loadingMessages = [
+      "selecting entries that benefit me...", "reading your minds...",
+      "judging your opinions...", "searching for compliments...",
+      "decoding your messages...",
+      "processing your thoughts...",
+    ];
+    document.getElementById("gbLoadingText").textContent =
+      loadingMessages[Math.floor(Math.random() * loadingMessages.length)];
+
+    var gbName = document.getElementById("gbName");
+    var gbMessage = document.getElementById("gbMessage");
+    var gbSubmit = document.getElementById("gbSubmit");
+    var gbStatus = document.getElementById("gbStatus");
+
+    function updateGbForm() {
+      document.getElementById("gbCharCount").textContent = gbMessage.value.length;
+      gbSubmit.disabled = !gbName.value.trim() || !gbMessage.value.trim();
+    }
+    gbName.addEventListener("input", updateGbForm);
+    gbMessage.addEventListener("input", updateGbForm);
+
+    function formatGbDate(ms) {
+      return new Date(ms).toLocaleDateString("en-US", {
+        month: "short", day: "numeric", year: "numeric",
+        hour: "2-digit", minute: "2-digit"
+      });
+    }
+
     async function loadGuestbook() {
-      const entries = await fetch("/api/guestbook").then(r => r.json());
-      const list = document.getElementById("gbList");
+      var loading = document.getElementById("gbLoading");
+      var list = document.getElementById("gbList");
+      var entries = [];
+      try {
+        entries = await fetch("/api/guestbook").then(function (r) { return r.json(); });
+      } catch (e) {
+        console.log("Loading entries:", e);
+      }
+      loading.style.display = "none";
+
+      document.getElementById("gbCount").textContent =
+        entries.length + (entries.length === 1 ? " Signature" : " Signatures");
+
       list.innerHTML = "";
 
       if (!entries.length) {
-        list.innerHTML = "<li>No entries yet. Be the first!</li>";
+        var empty = document.createElement("div");
+        empty.className = "gb-card gb-empty";
+        var ep = document.createElement("p");
+        ep.textContent = "No signatures yet. Be the first to sign!";
+        empty.appendChild(ep);
+        list.appendChild(empty);
         return;
       }
 
       entries.forEach(function (e) {
-        const li = document.createElement("li");
+        var card = document.createElement("div");
+        card.className = "gb-card gb-entry";
 
-        const who = document.createElement("strong");
-        who.textContent = e.name;           // textContent, never innerHTML
+        var who = document.createElement("h3");
+        who.textContent = e.name;            // textContent, never innerHTML
 
-        const when = document.createElement("small");
-        when.textContent = " " + new Date(e.created_at).toLocaleString();
+        var when = document.createElement("p");
+        when.className = "gb-date";
+        when.textContent = formatGbDate(e.created_at);
 
-        const msg = document.createElement("p");
+        var msg = document.createElement("p");
+        msg.className = "gb-message";
         msg.textContent = e.message;
 
-        li.append(who, when, msg);
-        list.appendChild(li);
+        card.append(who, when, msg);
+        list.appendChild(card);
       });
     }
 
     document.getElementById("gbForm").addEventListener("submit", async function (ev) {
       ev.preventDefault();
-      const status = document.getElementById("gbStatus");
-      const nameEl = document.getElementById("gbName");
-      const msgEl = document.getElementById("gbMessage");
+      gbSubmit.disabled = true;
+      gbSubmit.textContent = "Signing...";
+      gbStatus.textContent = "";
 
-      const res = await fetch("/api/guestbook", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name: nameEl.value, message: msgEl.value })
-      });
-      const data = await res.json();
+      try {
+        var res = await fetch("/api/guestbook", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name: gbName.value, message: gbMessage.value })
+        });
+        var data = await res.json();
 
-      if (!res.ok) {
-        status.textContent = data.error;
-        return;
+        if (!res.ok) {
+          gbStatus.textContent = data.error;
+        } else {
+          gbName.value = "";
+          gbMessage.value = "";
+          gbStatus.textContent = "Thanks for signing!";
+          loadGuestbook();
+        }
+      } catch (e) {
+        gbStatus.textContent = "Failed to save your entry. Please try again!";
       }
 
-      status.textContent = "Thanks for signing!";
-      msgEl.value = "";
-      loadGuestbook();
+      gbSubmit.textContent = "Sign Guest Book";
+      updateGbForm();
     });
 
     loadGuestbook();
-    // Logo swap on click
-    var logo = document.getElementById("logoSwap");
-    logo.addEventListener("click", function () {
-      logo.classList.toggle("swapped");
-    });
-    logo.addEventListener("keydown", function (e) {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        logo.classList.toggle("swapped");
-      }
-    });
 
     // Footer random text
     var phrases = [

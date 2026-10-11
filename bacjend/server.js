@@ -34,11 +34,11 @@ app.post("/api/guestbook", (req, res) => {
   const name = String(req.body.name ?? "").trim();
   const message = String(req.body.message ?? "").trim();
 
-  if (name.length < 1 || name.length > 30) {
-    return res.status(400).json({ error: "Name must be 1 to 30 characters." });
+  if (name.length < 1 || name.length > 50) {
+    return res.status(400).json({ error: "Name must be 1 to 50 characters." });
   }
-  if (message.length < 1 || message.length > 300) {
-    return res.status(400).json({ error: "Message must be 1 to 300 characters." });
+  if (message.length < 1 || message.length > 500) {
+    return res.status(400).json({ error: "Message must be 1 to 500 characters." });
   }
 
   const now = Date.now();
