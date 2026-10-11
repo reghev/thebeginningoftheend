@@ -241,13 +241,18 @@ li {
 
 /*GUESTBOOK START*/
 .guestbook {
-  background: #000;
+  box-sizing: border-box;
+  width: calc(100% - 32px);
+  max-width: 56rem;
+  margin: 0 auto 4rem;
+  padding: 3rem 2rem;
   color: #fff;
   text-align: left;
   font-weight: normal;
+  border: 3px solid #fff;
+  border-radius: 1.5rem;
   font-family: ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  padding: 6rem 2rem 5rem;
 }
 .guestbook p { font-weight: normal; margin: 0; }
 .gb-inner { max-width: 56rem; margin: 0 auto; }
