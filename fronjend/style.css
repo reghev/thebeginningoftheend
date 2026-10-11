@@ -241,12 +241,12 @@ li {
 
 /*GUESTBOOK START*/
 .guestbook {
-  background:#000;
   box-sizing: border-box;
   width: calc(100% - 32px);
   max-width: 56rem;
   margin: 0 auto 4rem;
   padding: 3rem 2rem;
+  background: #000;
   color: #fff;
   text-align: left;
   font-weight: normal;
