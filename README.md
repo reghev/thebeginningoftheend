@@ -1,1 +1,1 @@
-Website
+I've had this website idea for a while because I thought it was funny so I made it and then at capitol Max and Augie told me to buy the domain raghav.beer so i did because i thought it was pretty funny, overall 10/10 experience to make a bad html website and only thing i would change is the mobile support not tweaking out
